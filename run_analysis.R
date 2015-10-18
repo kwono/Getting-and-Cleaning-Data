@@ -7,7 +7,7 @@
 # 4. Appropriately labels the data set with descriptive variable names. 
 # 5. From the data set in step 4, creates a second, independent tidy data set with the average of each variable for each activity and each subject.
 
-## load the files into R and create an R object for each file.
+## Load the files into R and create an R object for each file.
 subject_test <- read.table("./UCI HAR Dataset/test/subject_test.txt")
 subject_train <- read.table("./UCI HAR Dataset/train/subject_train.txt")
 x_test <- read.table("./UCI HAR Dataset/test/x_test.txt")
@@ -17,39 +17,43 @@ y_train <- read.table("./UCI HAR Dataset/train/y_train.txt")
 features <- read.table("./UCI HAR Dataset/features.txt")
 labels <- read.table("./UCI HAR Dataset/activity_labels.txt")
 
-## combine the files together.
+## Combine the files together, store the result in complete_data.
 test <- cbind(subject_test, y_test, x_test)
 train <- cbind(subject_train, y_train, x_train)
 complete_data <- rbind(test, train)
 
-
-## subsetting the complete_data file, taking only the mean and sd for the measurements. 
+## Subsetting the features, taking only the mean and standard deviation for the measurements, sort in ascending order, and storing the result in features_mod.
 themeans <- grep("*mean\\(\\)*", features[, 2])
+themeans <- as.data.frame(themeans)
 thestds <- grep("*std\\(\\)*", features[, 2])
+thestds <- as.data.frame(thestds)
 feat_means <- merge(features, themeans, by.x = "V1", by.y = "themeans")
 feat_stds <- merge(features, thestds, by.x = "V1", by.y = "thestds")
 features_mod <- rbind(feat_means, feat_stds)
 features_mod <- features_mod[order(features_mod$V1), ]
-features_mod["V3"] <- NA
-features_mod$V3 <- features_mod$V1+2
 
-## extracting
+## Matching column names in complete_data with the rows in the second column in features_mod to extract only the columns in complete_data that have the same names. Store the result in complete_data_mod.
+features_mod["V3"] <- NA 
+features_mod$V3 <- features_mod$V1+2 
 sub_cols <- append(c(1,2), features_mod$V3)
-complete_data_mod <- complete_data[, sub_cols]
+complete_data_mod <- complete_data[, sub_cols] ## columns 3 - 68 in complete_data_mod = rows 1 - 68 in the 3rd column in features_mod
 
-## naming variables
+## Naming column names
 col_names <- append(c("subject", "activity"), as.character(features_mod$V2))
 names(complete_data_mod) <- col_names
+names(complete_data_mod) <- gsub("*\\(\\)*", "", names(complete_data_mod))
 
-## renaming the activities according to the activity_label file.
+## Renaming the activities according to the activity_label file.
 for(i in 1:6) {
-	tidy_data$activity <- sub(i, labels$V2[i], tidy_data$activity)
+	complete_data_mod$activity <- sub(i, labels$V2[i], complete_data_mod$activity)
 }
+
+## Convert to dplyr table
+tidy_data <- tbl_df(complete_data_mod)
+
 
 
 write.table(tidy_data, "tidy_data.txt", row.name = FALSE)
-
-
 
 
 

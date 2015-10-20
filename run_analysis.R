@@ -41,7 +41,9 @@ complete_data_mod <- complete_data[, sub_cols] ## columns 3 - 68 in complete_dat
 ## Naming column names
 col_names <- append(c("subject", "activity"), as.character(features_mod$V2))
 names(complete_data_mod) <- col_names
-names(complete_data_mod) <- gsub("*\\(\\)*", "", names(complete_data_mod))
+## Remove () and - from column names
+names(complete_data_mod) <- gsub("\\(\\)", "", names(complete_data_mod))
+names(complete_data_mod) <- gsub("-", "", names(complete_data_mod))
 
 ## Renaming the activities according to the activity_label file.
 for(i in 1:6) {
@@ -51,8 +53,16 @@ for(i in 1:6) {
 ## Convert to dplyr table
 tidy_data <- tbl_df(complete_data_mod)
 
+## Sort tidy_data by subject, then by activity
+tidy_data_sorted <- arrange(tidy_data, subject, activity)
 
+## Group tidy_data_sorted by subject, then by activity
+by_sub_act <- group_by(tidy_data_sorted, subject, activity)
 
+## Compute the mean for each measurement
+summary <- summarise_each(by_sub_act, funs(mean))
+
+## Write the table to tidy_data.txt file.
 write.table(tidy_data, "tidy_data.txt", row.name = FALSE)
 
 

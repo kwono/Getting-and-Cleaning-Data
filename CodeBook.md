@@ -1,6 +1,6 @@
 # Explanation of the variables.
 
-* subject:
+** subject: 
 
    the subject who performed each activity, range from 1 to 30.
 	

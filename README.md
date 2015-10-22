@@ -1,10 +1,10 @@
-# Getting-and-Cleaning-Data Project
+# Getting and Cleaning Data Project
 
-The purpose of the script is to perform the following:
+### The purpose of the script is to perform the following:*
 
 1. Merges the training and the test sets to create one data set.
 
-First load the files onto R and create an R object for each file: 
+..* First load the files onto R and create an R object for each file: 
 subject_test, subject_train, x_test, x_train, y_test, y_train, features, and labels.
 
 Then combine the files together and store the result in complete_data.

@@ -1,10 +1,10 @@
 # Explanation of the variables.
 
-** subject: 
+**subject:**
 
    the subject who performed each activity, range from 1 to 30.
 	
-* activity:
+**activity:**
 
    the activity that each subject performed: laying, sitting, standing, walking, walking downstairs, walking upstairs.
 

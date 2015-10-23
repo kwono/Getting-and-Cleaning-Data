@@ -2,6 +2,9 @@
 
 >This project was part of the assignments for [Coursera Getting and Cleaning Data](https://www.coursera.org/course/getdata).
 The data are from [UCI Machine Learning Repo](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
+The final table looks like this:
+
+><img src="summary.png" alt="summary table" height="300" width="500">
 
 ### The purpose of the script is to perform the following:
  

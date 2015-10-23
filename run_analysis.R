@@ -35,9 +35,8 @@ names(complete_data_mod) <- col_names
 ## Remove "()" and "-" from column names
 names(complete_data_mod) <- gsub("\\(\\)", "", names(complete_data_mod))
 names(complete_data_mod) <- gsub("-", "", names(complete_data_mod))
-## Change "mean" to "Mean" and "std" to "Std" for more readability.
-names(complete_data_mod) <- gsub("mean", "Mean", names(complete_data_mod))
-names(complete_data_mod) <- gsub("std", "Std", names(complete_data_mod))
+## Change all variable names to lower case.
+names(complete_data_mod) <- tolower(names(complete_data_mod))
 
 ## Rename the activities according to the activity_label file.
 for(i in 1:6) {

@@ -32,7 +32,9 @@ by columns indices created in *sub\_cols*, store the result in *complete\_data\_
 
   - Create an object called *col\_names* consisting of "**subject**", "**activity**", and characters from col 2 in *features\_mod*. Rename the col names if *complete\_data\_mod* by the characters just created in *col\_names*. 
   
-  - Use **gsub** to remove the "**()**" and "**-**" from the variable names and to change "**mean**" to "**Mean**" and "**std**" to "**Std**" for more readability.
+  - Use **gsub** to remove the "**()**" and "**-**" from the variable names. 
+  
+  - Use **tolower** to change all variable names to lower case. 
 
   - Use the **sub** function and a **for loop** to rename the values of the activity, matching them with the values of col 1 in labels.
 

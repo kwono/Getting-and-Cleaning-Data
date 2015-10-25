@@ -1,4 +1,20 @@
-# Explanation of the variables
+#Getting and Cleaning Data Project
+Author: Katrina Wono
+
+Date: October 25, 2015
+
+## Output: tidy_data.txt
+Dimensions: 180 x 68
+
+## Project Description
+>This project was part of the assignments for [Coursera Getting and Cleaning Data](https://www.coursera.org/course/getdata).
+
+>Brief description on study design and data collection can be found here: [UCI Machine Learning Repo.](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones)
+
+##Creating the tidy_data.txt file
+>Detailed description on the process from downloading the raw data to creating the tidy data file is explained in the README file.
+
+##Description of the variables in the tiny_data.txt file
 
 **subject:**
 >the subject who performed each activity, range from 1 to 30.

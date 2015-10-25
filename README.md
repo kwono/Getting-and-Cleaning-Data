@@ -1,18 +1,19 @@
 # Getting and Cleaning Data Project
-
 >This project was part of the assignments for [Coursera Getting and Cleaning Data](https://www.coursera.org/course/getdata).
 
 >The data are taken from [UCI Machine Learning Repo](http://archive.ics.uci.edu/ml/datasets/Human+Activity+Recognition+Using+Smartphones).
 
+## Output: tidy_data.txt
+Dimensions: 180 x 68
 
-### The purpose of the script is to perform the following:
+## The purpose of the script is to perform the following:
  
 1. Merge the training and the test sets to create one data set.
 
-  - First load the files onto R and create an R object for each file:
+  - First download the necessary files, then load the files into R and create an R object for each file:
 *subject\_test*, *subject\_train*, *x\_test*, *x\_train*, *y\_test*, *y\_train*, *features*, and *labels*.
 
-  - Then combine the files together and store the result in *complete\_data*.
+  - Then combine the files together using **cbind** and **rbind** and store the result in *complete\_data*.
 
 2. Extract only the measurements on the mean and standard deviation for each measurement.
 
@@ -48,27 +49,7 @@ by columns indices created in *sub\_cols*, store the result in *complete\_data\_
   - Compute the **mean** for each measurement, store it in *summary*.
   - Write the table to *tidy\_data.txt* file.
   
-Optional steps:
+The tidy data created above use the wide format. To convert it to the long format (11880 x 4):
 
   - Use **gather** to convert the format of the table, store the result in *summary\_long*.
   - Write the table to *tidy\_data\_long.txt* file.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
